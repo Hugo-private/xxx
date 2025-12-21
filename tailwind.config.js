@@ -19,6 +19,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
+          '"Manrope"',
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
@@ -33,6 +34,7 @@ export default {
           '"Segoe UI Symbol"',
           '"Noto Color Emoji"',
         ],
+        display: ['"Fraunces"', "ui-serif", "Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
