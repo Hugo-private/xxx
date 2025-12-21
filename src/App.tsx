@@ -25,7 +25,7 @@ import {
  *
  * GIF 放置方式（建議）：
  * - 請將你提供的 GIF 檔（01.gif）放到 public/ 目錄。
- * - 這樣就能用 <img src="/01.gif" /> 直接引用。
+ * - 這樣就能用 <img src={`${import.meta.env.BASE_URL}01.gif`} /> 直接引用。
  */
 
 // --------------------------------------------
@@ -35,6 +35,9 @@ import {
 function cx(...classes: Array<string | false | null | undefined>) {
   return classes.filter(Boolean).join(' ')
 }
+
+const withBase = (path: string) =>
+  `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 
 type SimpleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'solid' | 'outline'
@@ -333,7 +336,7 @@ const PBI_KPI_MOCK = [
 ]
 void PBI_KPI_MOCK
 
-const POWER_BI_GIF_SRC = '/01.gif'
+const POWER_BI_GIF_SRC = withBase('01.gif')
 
 function PowerBIDemoShowcase() {
   const [gifOk, setGifOk] = useState(true)
@@ -834,7 +837,9 @@ export default function App() {
 
   // 大頭照（建議放在 public/，用「/檔名」引用）
   // 例：把照片放到 public/avatar.jpg，這裡就填 '/avatar.jpg'
-  const aboutImgSrc = isReport ? '/年度報告封面.png' : '/IMG_1722.JPG'
+  const aboutImgSrc = isReport
+    ? withBase('年度報告封面.png')
+    : withBase('IMG_1722.JPG')
   const [aboutImgOk, setAboutImgOk] = useState(true)
 
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null)
@@ -1537,7 +1542,7 @@ export default function App() {
                     <div className="card-muted">
                       <div className="mt-3 inline-block">
                         <img
-                          src="/vibe%20coding.png"
+                          src={withBase('vibe%20coding.png')}
                           alt="Vibe coding demo"
                           className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                         />
@@ -1574,7 +1579,7 @@ export default function App() {
                     <div className="card-muted">
                       <div className="mt-3 inline-block">
                         <img
-                          src="/Figma.png"
+                          src={withBase('Figma.png')}
                           alt="Figma demo"
                           className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                         />
@@ -1623,7 +1628,7 @@ export default function App() {
                         <div className="flex flex-col gap-3">
                           <div className="space-y-2">
                             <img
-                              src="/Notion-issue.png"
+                              src={withBase('Notion-issue.png')}
                               alt="Notion issue demo"
                               className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                             />
@@ -1633,7 +1638,7 @@ export default function App() {
                           </div>
                           <div className="space-y-2">
                             <img
-                              src="/Notion-project.png"
+                              src={withBase('Notion-project.png')}
                               alt="Notion project demo"
                               className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                             />
@@ -1688,7 +1693,7 @@ export default function App() {
                         <div className="flex flex-col gap-3">
                           <div className="space-y-2">
                             <img
-                              src="/%E4%BD%9C%E5%93%81%E4%B8%80%E5%B0%81%E9%9D%A2.png"
+                              src={withBase('%E4%BD%9C%E5%93%81%E4%B8%80%E5%B0%81%E9%9D%A2.png')}
                               alt="Side project cover 1"
                               className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                             />
@@ -1698,7 +1703,7 @@ export default function App() {
                           </div>
                           <div className="space-y-2">
                             <img
-                              src="/%E4%BD%9C%E5%93%81%E4%BA%8C%E5%B0%81%E9%9D%A2.png"
+                              src={withBase('%E4%BD%9C%E5%93%81%E4%BA%8C%E5%B0%81%E9%9D%A2.png')}
                               alt="Side project cover 2"
                               className="h-auto w-auto max-w-full rounded-xl border border-border/80 object-contain"
                             />
