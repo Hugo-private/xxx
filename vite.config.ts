@@ -11,6 +11,7 @@ const forwardingDomain = process.env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN ??
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/xxx/',
   plugins: [react()],
   resolve: {
     alias: {
