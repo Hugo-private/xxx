@@ -702,7 +702,7 @@ const REPORT_OTHER_PROJECTS = [
 const RESUME_CONTENT = {
   header: {
     title: 'Hugo',
-    // subtitle: 'Data • BI • Automation',
+    subtitle: '',
   },
   hero: {
     title: '謝佩蓁 | Hugo',
@@ -755,7 +755,7 @@ const RESUME_CONTENT = {
 const REPORT_CONTENT = {
   header: {
     title: '2025 年度總結報告',
-    // subtitle: '回顧 • 成果 • 下一步',
+    subtitle: '',
   },
   hero: {
     title: '2025 年度回顧',
@@ -1331,6 +1331,15 @@ export default function App() {
               </div>
               {!isReport && (
                 <div className="mx-auto mt-4 flex max-w-4xl flex-wrap justify-center gap-2">
+                  <SimpleButton
+                    type="button"
+                    variant={experienceIndex === 0 ? 'solid' : 'outline'}
+                    size="default"
+                    onClick={() => setExperienceIndex(0)}
+                    className="h-9 px-3 text-sm"
+                  >
+                    網站企劃專員
+                  </SimpleButton>
                   {resumeExperienceNav.map((item) => (
                     <SimpleButton
                       key={item.title}
